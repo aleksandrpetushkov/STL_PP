@@ -16,6 +16,8 @@ template<class K> ostream & operator<<(ostream &output, const vector<K> &val)
 		output << i << " element - " << (*iter) << endl;
 	}
 	//*/
+
+	cout << endl << &val;
 	for(const auto& elem:val)
 	{
 		output << i << ". element - " << elem << endl;
