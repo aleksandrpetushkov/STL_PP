@@ -16,7 +16,7 @@ template<class K> ostream & operator<<(ostream &output, const vector<K> &val)
 		output << i << " element - " << (*iter) << endl;
 	}
 	//*/
-
+	
 	cout << endl << &val;
 	for(const auto& elem:val)
 	{
@@ -50,7 +50,7 @@ template<class K, class T> ostream & operator<<(ostream &output, const map<K, T>
 	return output;
 }
 
-template <class K> ostream & operator<<(ostream &output, const set<K> val)
+template <class K> ostream & operator<<(ostream &output, const  set<K>& val)
 {
 	int i(1);
 
