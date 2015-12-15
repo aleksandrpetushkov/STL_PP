@@ -21,6 +21,13 @@ template<class K> ostream & operator<<(ostream &output, vector<K> &val)
 		++i;
 	}
 	return output;
+
+	//range based for разобраться что это такое и как использовать переопределить все через auto - сделано;
+	// ВАЖНО КАК ПЕРЕОПРЕДЕЛИТЬ КОНСТАНТНЫЙ ВЕКТОР (const vector) и можно ли это сделать вообще. 
+	// как передавать аргумент в функцию все способы рассказать. - по значению, по ссылке по адресу.
+
+
+	//тесты,
 }
 
 template<class K, class T> ostream & operator<<(ostream &output, map<K, T> &val) 
