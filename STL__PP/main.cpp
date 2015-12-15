@@ -2,11 +2,12 @@
 #include <vector>
 #include <map>
 #include <set>
+#include "gtest/gtest.h"
 
 using namespace std;
 
 
-template<class K> ostream & operator<<(ostream &output, vector<K> &val)
+template<class K> ostream & operator<<(ostream &output, const vector<K> &val)
 {
 	int i(1);
 	/*
@@ -17,20 +18,20 @@ template<class K> ostream & operator<<(ostream &output, vector<K> &val)
 	//*/
 	for(const auto& elem:val)
 	{
-		output << i << "element - " << elem << endl;
+		output << i << ". element - " << elem << endl;
 		++i;
 	}
 	return output;
 
-	//range based for разобраться что это такое и как использовать переопределить все через auto - сделано;
-	// ВАЖНО КАК ПЕРЕОПРЕДЕЛИТЬ КОНСТАНТНЫЙ ВЕКТОР (const vector) и можно ли это сделать вообще. 
-	// как передавать аргумент в функцию все способы рассказать. - по значению, по ссылке по адресу.
+	// range based for разобраться что это такое и как использовать переопределить все через auto - сделано;
+	// ВАЖНО КАК ПЕРЕОПРЕДЕЛИТЬ КОНСТАНТНЫЙ ВЕКТОР (const vector) и можно ли это сделать вообще. если передавать по указателю
+	// как передавать аргумент в функцию все способы рассказать. ответы: по значению, по ссылке по указателю.
 
 
 	//тесты,
 }
 
-template<class K, class T> ostream & operator<<(ostream &output, map<K, T> &val) 
+template<class K, class T> ostream & operator<<(ostream &output, const map<K, T> &val) 
 {
 	int i(1);
 	/*
@@ -41,13 +42,13 @@ template<class K, class T> ostream & operator<<(ostream &output, map<K, T> &val)
 	//*/
 	for (const auto& elem : val)
 	{
-		output << i << ".element - " "key: " << elem.first << " value: " << elem.second << endl;
+		output << i << ". element - " "key: " << elem.first << " value: " << elem.second << endl;
 		++i;
 	}
 	return output;
 }
 
-template <class K> ostream & operator<<(ostream &output, set<K> val)
+template <class K> ostream & operator<<(ostream &output, const set<K> val)
 {
 	int i(1);
 
@@ -59,13 +60,19 @@ template <class K> ostream & operator<<(ostream &output, set<K> val)
 	//*/
 	for (const auto& elem:val)
 	{
-		output << i << " element - " << elem << endl;
+		output << i << ". element - " << elem << endl;
 	}
 	return output;
 }
 
-int main()
+TEST(FactorialTest, HandlesPositiveInput) 
 {
+	EXPECT_EQ(1, 1);
+}
+
+int main(int argc, char* argv[])
+{
+
 	cout << "vector:" << endl;
 	vector<int> V;
 	V.push_back(11);
@@ -81,5 +88,9 @@ int main()
 	s.insert(11);
 	cout << s << endl;
 	
+
+	::testing::InitGoogleTest(&argc, argv);
+	RUN_ALL_TESTS();
+
 	cin.get();
 }
