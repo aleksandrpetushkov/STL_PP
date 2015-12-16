@@ -17,7 +17,6 @@ template<class K> ostream & operator<<(ostream &output, const vector<K> &val)
 	}
 	//*/
 	
-	cout << endl << &val;
 	for(const auto& elem:val)
 	{
 		output << i << ". element - " << elem << endl;
@@ -63,14 +62,48 @@ template <class K> ostream & operator<<(ostream &output, const  set<K>& val)
 	for (const auto& elem:val)
 	{
 		output << i << ". element - " << elem << endl;
+		++i;
 	}
 	return output;
 }
 
-TEST(FactorialTest, HandlesPositiveInput) 
+TEST(Vector, Output)
 {
-	EXPECT_EQ(1, 1);
+	ostringstream test_str;
+
+	vector <int> test = { 1, 2, 3 };
+
+	test_str << test;
+
+	EXPECT_EQ("1. element - 1\n2. element - 2\n3. element - 3\n", string(test_str.str()));
 }
+
+
+
+TEST(Map, Output)
+{
+	ostringstream test_str;
+
+	map <int, int> test;
+	test[1] = 3;
+	test[3] = 1;
+	test[2] = 5;
+
+	test_str << test;
+
+	EXPECT_EQ("1. element - key: 1 value: 3\n2. element - key: 2 value: 5\n3. element - key: 3 value: 1\n", string(test_str.str()));
+}
+//*
+TEST(Set, Output)
+{
+	ostringstream test_str;
+
+	set <int> test = { 1, 2, 3 };
+	test_str << test;
+
+	EXPECT_EQ("1. element - 1\n2. element - 2\n3. element - 3\n", string(test_str.str()));
+}
+//*/
 
 int main(int argc, char* argv[])
 {
@@ -89,7 +122,18 @@ int main(int argc, char* argv[])
 	set<int> s;
 	s.insert(11);
 	cout << s << endl;
-	
+
+	//Const Vector
+	const vector<int> *_cvector; //const pointer
+	//_cvector = new vector<int>; /
+	vector<int> i;  
+	i.push_back(5);
+	i.push_back(6);
+	i.push_back(7);
+	i.push_back(8);
+	_cvector = &i;
+	cout << "Const pointer:\n";
+	cout << (*_cvector) << endl;
 
 	::testing::InitGoogleTest(&argc, argv);
 	RUN_ALL_TESTS();
