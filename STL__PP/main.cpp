@@ -3,6 +3,7 @@
 #include <map>
 #include <set>
 #include "gtest/gtest.h"
+#include "gtest\gtest.h"
 
 using namespace std;
 
@@ -77,7 +78,6 @@ TEST(Vector, Output)
 
 	EXPECT_EQ("1. element - 1\n2. element - 2\n3. element - 3\n", string(test_str.str()));
 }
-
 
 
 TEST(Map, Output)
